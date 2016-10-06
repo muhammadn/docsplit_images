@@ -6,6 +6,9 @@ class DocsplitImages::DocsplitImagesJob
 
   def perform(class_name, id)
     object = class_name.constantize.find_by(id: id)
-    object.docsplit_images_process    
+    object.docsplit_images_process 
+    puts class_name
+    puts id   
   end
+
 end
