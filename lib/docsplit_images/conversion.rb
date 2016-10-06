@@ -3,8 +3,8 @@ module DocsplitImages
     
     def self.included(base)
       
-      before_commit :check_for_file_change
-      after_commit :docsplit_images, :on => :create
+      self.before_commit :check_for_file_change
+      self.after_commit :docsplit_images
       
       def check_for_file_change
         @file_has_changed = self.send(self.class.docsplit_attachment_name).dirty?
