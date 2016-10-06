@@ -1,4 +1,5 @@
 require 'sidekiq'
+require 'conversion'
 
 class DocsplitImages::DocsplitImagesJob
   include ::Sidekiq::Worker
