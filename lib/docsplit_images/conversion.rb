@@ -3,7 +3,7 @@ module DocsplitImages
     
     def self.included(base)
       
-      self.before_commit :check_for_file_change
+      self.before_save :check_for_file_change
       self.after_commit :docsplit_images
       
       def check_for_file_change
