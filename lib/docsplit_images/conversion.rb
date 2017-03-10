@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module DocsplitImages
   module Conversion
     def self.included(base)
@@ -35,7 +37,8 @@ module DocsplitImages
         if ext.casecmp('pdf')
           doc_path
         else
-          tempdir = File.join(Dir.tmpdir, 'docsplit')
+          uuid = SecureRandom.uuid
+          tempdir = File.join(Dir.tmpdir, 'docsplit/#{uuid}')
           Docsplit.extract_pdf([doc_path], output: tempdir)
           File.join(tempdir, File.basename(doc_path, ext) + '.pdf')
         end
